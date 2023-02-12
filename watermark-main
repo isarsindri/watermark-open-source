@@ -1,0 +1,139 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Watermark = Instance.new("Frame")
+local UIGradient = Instance.new("UIGradient")
+local topbar = Instance.new("Frame")
+local Name = Instance.new("TextLabel")
+local FPS = Instance.new("TextLabel")
+local X = Instance.new("ImageButton")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = game.CoreGui
+
+Watermark.Name = "Watermark"
+Watermark.Parent = ScreenGui
+Watermark.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Watermark.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Watermark.BorderSizePixel = 0
+Watermark.Position = UDim2.new(0.00531913107, 0, 0.0311720558, 0)
+Watermark.Size = UDim2.new(0, 235, 0, 22)
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(42, 42, 42)), ColorSequenceKeypoint.new(0.96, Color3.fromRGB(80, 80, 80)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(74, 74, 74))}
+UIGradient.Parent = Watermark
+
+topbar.Name = "topbar"
+topbar.Parent = Watermark
+topbar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+topbar.BorderSizePixel = 0
+topbar.Position = UDim2.new(0, 0, -0.0409088135, 0)
+topbar.Size = UDim2.new(0, 235, 0.0500000007, 0)
+
+Name.Name = "Name"
+Name.Parent = Watermark
+Name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Name.BackgroundTransparency = 1.000
+Name.BorderSizePixel = 0
+Name.Position = UDim2.new(0.204255328, 0, 0.00909146387, 0)
+Name.Size = UDim2.new(0, 61, 0, 20)
+Name.Font = Enum.Font.SourceSansItalic
+Name.Text = "Paradoxware"
+Name.TextColor3 = Color3.fromRGB(199, 199, 199)
+Name.TextSize = 20.000
+
+FPS.Name = "FPS"
+FPS.Parent = Watermark
+FPS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FPS.BackgroundTransparency = 1.000
+FPS.BorderSizePixel = 0
+FPS.Position = UDim2.new(0.625531912, 0, 0.00909145176, 0)
+FPS.Size = UDim2.new(0, 61, 0, 20)
+FPS.Font = Enum.Font.SourceSansItalic
+FPS.Text = ""
+FPS.TextColor3 = Color3.fromRGB(199, 199, 199)
+FPS.TextSize = 24.000
+
+X.Name = "X"
+X.Parent = Watermark
+X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+X.BorderSizePixel = 0
+X.Position = UDim2.new(0, 0, 0.00909146387, 0)
+X.Size = UDim2.new(0, 28, 0, 21)
+X.Image = "http://www.roblox.com/asset/?id="..getgenv().decalid
+X.MouseButton1Down:Connect(function()
+	Watermark:Destroy()
+end)
+
+-- Scripts:
+
+local function QAAFPJT_fake_script() -- topbar.LocalScript 
+	local script = Instance.new('LocalScript', topbar)
+
+	counter = 0
+	while wait() do
+		script.Parent.BackgroundColor3 = Color3.fromHSV(counter,1,1)
+		counter = counter + 0.0095
+		if counter >= 1 then
+			counter = 0
+		end
+	end
+end
+coroutine.wrap(QAAFPJT_fake_script)()
+local function UBTOHQG_fake_script() -- Watermark.Script 
+	local script = Instance.new('Script', Watermark)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(UBTOHQG_fake_script)()
+frames = nil
+
+local RunService = game:GetService("RunService")
+RunService.RenderStepped:Connect(function(step)
+	frames = ("FPS:"..math.floor(1/step))
+end)
+
+local loop = "paradoxware"
+repeat
+	wait(0.09)
+	FPS.Text = (frames)
+until loop == "skiddedware"
