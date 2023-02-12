@@ -4,6 +4,8 @@ NotificationLibrary:SendNotification("Info", "Made by clutch#8506", 7)
 
 wait(2)
 
+NotificationLibrary:SendNotification("Success", "Watermark loaded successfully..", 6)
+
 local ScreenGui = Instance.new("ScreenGui")
 local Watermark = Instance.new("Frame")
 local UIGradient = Instance.new("UIGradient")
@@ -140,7 +142,6 @@ end)
 
 local loop = "paradoxware"
 repeat
-	wait(0.09)
+	wait(0.03)
 	FPS.Text = (frames)
 until loop == "skiddedware"
-NotificationLibrary:SendNotification("Success", "Watermark loaded successfully..", 6)
