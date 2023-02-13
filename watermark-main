@@ -29,7 +29,7 @@ Watermark.BorderSizePixel = 0
 Watermark.Position = UDim2.new(0.00531913107, 0, 0.0311720558, 0)
 Watermark.Size = UDim2.new(0, 235, 0, 22)
 
-UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(42, 42, 42)), ColorSequenceKeypoint.new(0.96, Color3.fromRGB(80, 80, 80)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(74, 74, 74))}
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(14, 42, 32)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(26, 39, 50))}
 UIGradient.Parent = Watermark
 
 topbar.Name = "topbar"
