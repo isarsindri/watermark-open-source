@@ -71,7 +71,7 @@ X.Position = UDim2.new(0, 0, 0.00909146387, 0)
 X.Size = UDim2.new(0, 28, 0, 21)
 X.Image = "http://www.roblox.com/asset/?id="..getgenv().decalid
 X.MouseButton1Down:Connect(function()
-	Watermark:Destroy()
+	ScreenGui:Destroy()
 end)
 
 -- Scripts:
